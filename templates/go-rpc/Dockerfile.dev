@@ -1,0 +1,7 @@
+FROM golang:1.14 as builder
+
+WORKDIR /services/{{.ServiceName}}
+
+RUN go get github.com/cespare/reflex
+
+CMD reflex -r '\.go$' --start-service -- go run main.go

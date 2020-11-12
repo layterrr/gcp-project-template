@@ -1,0 +1,12 @@
+steps:
+- name: 'gcr.io/cloud-builders/gcloud:latest'
+  args:
+    - 'run'
+    - 'deploy'
+    - '{{.ServiceName}}'
+    - '--image'
+    - 'gcr.io/$_CONTAINER_PROJECT/services/{{.ServiceName}}:$_VERSION'
+    - '--region'
+    - 'europe-west1'
+    - '--platform'
+    - 'managed'

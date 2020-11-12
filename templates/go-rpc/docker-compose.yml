@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  {{.ServiceName}}:
+    build:
+      context: .
+      dockerfile: services/{{.ServiceName}}/Dockerfile.dev
+    volumes:
+      - ./go.mod:/go.mod
+      - ./go.sum:/go.sum
+      - ./services/{{.ServiceName}}:/services/{{.ServiceName}}
+    environment:
+    ports:
+      - "8080:8080"
+    networks:
+      - webnet
+    depends_on:
+
+networks:
+  webnet:

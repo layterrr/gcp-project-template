@@ -1,0 +1,19 @@
+FROM golang:1.14 as builder
+
+WORKDIR /app
+
+COPY go.mod .
+COPY go.sum .
+
+RUN go mod download
+
+COPY services/{{.ServiceName}} services/{{.ServiceName}}
+
+RUN CGO_ENABLED=0 go build -o server services/{{.ServiceName}}/main.go
+
+FROM alpine:3
+RUN apk add --no-cache ca-certificates
+
+COPY --from=builder /app/server /app/
+
+ENTRYPOINT ["/app/server"]

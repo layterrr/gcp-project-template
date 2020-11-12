@@ -1,0 +1,14 @@
+syntax = "proto3";
+package services.{{.ServiceName}};
+option go_package = "{{.ServiceName}}proto";
+
+service {{.ServiceName}}Service {
+  rpc Ping(PingRequest) returns (PingResponse);
+}
+
+message PingRequest {
+}
+
+message PingResponse {
+  bool ok = 1;
+}
