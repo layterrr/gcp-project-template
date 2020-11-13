@@ -1,8 +1,8 @@
 syntax = "proto3";
-package services.{{.ServiceName}};
+package services.{{.ServiceName | ToCamel | ToLower}};
 option go_package = "proto";
 
-service {{.ServiceName}}Service {
+service {{.ServiceName | ToCamel}}Service {
   rpc Ping(PingRequest) returns (PingResponse);
 }
 

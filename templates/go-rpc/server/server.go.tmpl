@@ -7,12 +7,12 @@ import (
 )
 
 // Server .
-type {{.ServiceName | Title}}Server struct {
+type {{.ServiceName | ToCamel}}Server struct {
 	Logger *zap.Logger
 }
 
 // Ping .
-func (s *{{.ServiceName | Title}}Server) Ping(ctx context.Context, req *proto.PingRequest) (rsp *proto.PingResponse, err error) {
+func (s *{{.ServiceName | ToCamel}}Server) Ping(ctx context.Context, req *proto.PingRequest) (rsp *proto.PingResponse, err error) {
 	return &proto.PingResponse{
 		Ok: true,
 	}, nil
