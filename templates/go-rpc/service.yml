@@ -1,7 +1,7 @@
 name: {{.ServiceName}}
 test-command: go test .
 check-command: go vet .
-gen-proto-command: protoc --go_out=. --twirp_out=. -I=$SYNTHWAVE_DIR -I=$GOPATH/src ${{.ServicesDir}}/{{.ServiceName}}/proto/.proto
+gen-proto-command: protoc --go_out=. --twirp_out=. -I={{.ProjectDir}} -I=$GOPATH/src {{.ServicesDir}}/{{.ServiceName}}/proto/service.proto
 include:
   - go.mod
   - go.sum

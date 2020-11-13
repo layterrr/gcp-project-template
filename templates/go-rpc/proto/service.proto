@@ -1,6 +1,6 @@
 syntax = "proto3";
 package services.{{.ServiceName}};
-option go_package = "{{.ServiceName}}proto";
+option go_package = "proto";
 
 service {{.ServiceName}}Service {
   rpc Ping(PingRequest) returns (PingResponse);

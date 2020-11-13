@@ -1,0 +1,19 @@
+package server
+
+import (
+	"context"
+
+	"go.uber.org/zap"
+)
+
+// Server .
+type {{.ServiceName | Title}}Server struct {
+	Logger *zap.Logger
+}
+
+// Ping .
+func (s *{{.ServiceName | Title}}Server) Ping(ctx context.Context, req *proto.PingRequest) (rsp *proto.PingResponse, err error) {
+	return &proto.PingResponse{
+		Ok: true,
+	}, nil
+}

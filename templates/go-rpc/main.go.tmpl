@@ -8,15 +8,12 @@ import (
 	"os"
 
 	"github.com/blendle/zapdriver"
-	server "github.com/frontedxyz/synthwave/services/{{.ServiceName}}/server"
-	pb "github.com/frontedxyz/synthwave/services/{{.ServiceName}}/proto"
 	"github.com/joho/godotenv"
 	"go.uber.org/zap"
 )
 
 func main() {
 	var err error
-	ctx := context.Background()
 
 	// Get GCP project id
 	projectID, ok := os.LookupEnv("PROJECT_ID")
@@ -45,10 +42,10 @@ func main() {
 	}
 
 	// Create twirp server handler
-	server := &server.Server{
+	server := &server.{{.ServiceName | Title}}Server{
 		Logger: logger,
 	}
-	handler := pb.NewLoanServiceServer(server, nil)
+	handler := proto.New{{.ServiceName | Title}}ServiceServer(server, nil)
 	port, ok := os.LookupEnv("PORT")
 	if !ok {
 		port = "8080"
