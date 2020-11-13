@@ -4,6 +4,7 @@ import (
 	"context"
 
 	"go.uber.org/zap"
+	pb "github.com/frontedxyz/synthwave/services/{{.ServiceName}}/proto"
 )
 
 // Server .

@@ -8,7 +8,8 @@ import (
 	"os"
 
 	"github.com/blendle/zapdriver"
-	server ""
+	server "github.com/frontedxyz/synthwave/services/{{.ServiceName}}/server"
+	pb "github.com/frontedxyz/synthwave/services/{{.ServiceName}}/proto"
 	"github.com/joho/godotenv"
 	"go.uber.org/zap"
 )
